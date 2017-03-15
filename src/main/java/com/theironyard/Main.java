@@ -1,5 +1,9 @@
 package com.theironyard;
 
+import java.time.Month;
+import java.time.MonthDay;
+import java.time.format.DateTimeFormatter;
+
 /**
  * For this exercise you will be creating a new class, SignificantDate, that can
  * be used to calculate the days until a given date (such as Valentine's Day,
@@ -12,6 +16,7 @@ package com.theironyard;
 public class Main {
 
     public static void main(String[] args) {
+        MonthDay BirthDay = MonthDay.of(Month.OCTOBER , 15);
 
         /*
             In this main() method you should make use of your SignificantDate
@@ -53,16 +58,26 @@ public class Main {
          */
 
         // todo: create a new DateTimeFormatter in a variable named formatter
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yyyy");
 
 
         // todo: print the number of days to and the date of the next occurrence of a constant date defined in SignificantDate (other than leap year). EG: Valentines Day
+        System.out.printf("There are %s days until next occurrence of Christmas on %s\n",
+                SignificantDate.daysTo(SignificantDate.CHRISTMAS),
+                SignificantDate.next(SignificantDate.CHRISTMAS).format(formatter));
+
 
 
         // todo: print the number of days to and date of the next occurrence of leap year
+        System.out.printf("There are %s days until next occurrence of Leap year on %s\n",
+                SignificantDate.daysTo(SignificantDate.LEAP_YEAR),
+                SignificantDate.next(SignificantDate.LEAP_YEAR).format(formatter));
 
 
         // todo: print the number of days to and date of any arbitrary MonthDate that is not defined as a constant in SignificantDate. EG: your birthday
-
+        System.out.printf("There are %s days until next occurrence of Christmas on %s\n",
+                SignificantDate.daysTo(BirthDay),
+                SignificantDate.next(BirthDay).format(formatter));
 
     }
 
